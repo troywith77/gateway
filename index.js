@@ -4,7 +4,11 @@ const request = require('request')
 const app = new Koa()
 
 app.use(async (ctx) => {
-  ctx.body = request('https://xuangubao.cn')
+  if (ctx.request.hostname === 'example.xuangubao.cn') {
+    ctx.body = request('https://xuangubao.cn')
+    return
+  }
+  ctx.body = 'Something wrong happened'
 })
 
 app.listen(3000, () => {
