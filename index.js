@@ -1,14 +1,15 @@
 const Koa = require('koa')
 const request = require('request')
+const entry = require('./src/entry')
 
 const app = new Koa()
 
-app.use(async (ctx) => {
-  if (ctx.request.hostname === 'example.xuangubao.cn') {
-    ctx.body = request('https://xuangubao.cn')
-    return
+app.use(entry)
+
+app.use((ctx) => {
+  if (ctx.state.entry) {
+    ctx.body = ctx.state.entry
   }
-  ctx.body = 'Something wrong happened'
 })
 
 app.listen(3000, () => {
