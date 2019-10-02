@@ -2,6 +2,6 @@ module.exports = (ctx, next) => {
   const entry = ctx.state.entry
 
   if (entry) {
-    return entry.routes(ctx, next)
+    return entry.router.routes()(ctx, next)
   }
 }
