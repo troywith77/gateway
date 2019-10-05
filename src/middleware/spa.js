@@ -1,5 +1,6 @@
 const request = require('../lib/request')
 
 module.exports = url => ctx => {
-  ctx.body = ctx.req.pipe(request(url))
+  console.log(`${url}${ctx.url}`)
+  ctx.body = ctx.req.pipe(request(`${url}${ctx.url}`))
 }
