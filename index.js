@@ -4,7 +4,7 @@ const entry = require('./src/entry')
 const router = require('./src/router')
 
 const app = new Koa()
-const PORT = 3000
+const PORT = 3033
 
 app.use(entry)
 app.use(router)
